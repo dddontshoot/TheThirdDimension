@@ -28,10 +28,10 @@ se-meteor-point-defence-container,ammo-turret,,,,,,,1
 arithmetic-combinator,arithmetic-combinator,,,183,174,101,,1
 artillery-turret,artillery-turret,,basic/2x2.blend,255,255,0,1,1
 artillery-wagon,artillery-wagon,,,255,255,0,,1
-assembling-machine-1,assembling-machine,,assembling-machine.blend,166,166,128,1,1
-assembling-machine-2,assembling-machine,,assembling-machine.blend,53,68,82,1,1
-assembling-machine-3,assembling-machine,,assembling-machine.blend,74,74,26,1,1
-burner-assembling-machine,assembling-machine,,assembling-machine.blend,166,166,128,1,1
+assembling-machine-1,assembling-machine,,assembling-machine-1.blend,166,166,128,1,1
+assembling-machine-2,assembling-machine,,assembling-machine-1.blend,53,68,82,1,1
+assembling-machine-3,assembling-machine,,assembling-machine-1.blend,74,74,26,1,1
+burner-assembling-machine,assembling-machine,,assembling-machine-1.blend,166,166,128,1,1
 centrifuge,assembling-machine,,basic/3x3.blend,204,252,31,1,1
 chemical-plant,assembling-machine,,basic/3x3.blend,255,154,47,1,1
 fuel-processor,assembling-machine,,basic/3x3.blend,255,14,14,1,1
@@ -148,7 +148,7 @@ se-rocket-launch-pad,container,,,,,,,1
 signpost-display,container,,,,,,,1
 steel-chest,container,,steel-chest.blend,,,,1,1
 wooden-chest,container,,wooden-chest.blend,,,,1,1
-curved-rail,curved-rail,,,,,,,1
+curved-rail,curved-rail,,curved-rail.blend,,,,1,1
 se-space-curved-rail,curved-rail,,,,,,,1
 decider-combinator,decider-combinator,,,,,,,1
 big-electric-pole,electric-pole,,basic/big-electric-pole.blend,,,,1,1
