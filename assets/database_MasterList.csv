@@ -148,7 +148,7 @@ se-rocket-launch-pad,container,,,,,,,1
 signpost-display,container,,,,,,,1
 steel-chest,container,,steel-chest.blend,,,,1,1
 wooden-chest,container,,wooden-chest.blend,,,,1,1
-curved-rail,curved-rail,,curved-rail.blend,,,,1,1
+curved-rail,curved-rail,,,,,,,1
 se-space-curved-rail,curved-rail,,,,,,,1
 decider-combinator,decider-combinator,,,,,,,1
 big-electric-pole,electric-pole,,basic/big-electric-pole.blend,,,,1,1
