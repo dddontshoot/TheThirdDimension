@@ -1,0 +1,139 @@
+Note: this file is a little out of date, and is probably missing some resent changes.
+
+=========
+Programs:
+=========
+main.py - Main program that will run the other programs.
+            Accepts these inputs:
+            - settings.py
+            - arguments
+            - entityDataBase
+            - baseFile
+            Outputs:
+            - Executes fragmentBuilder inside Blender.
+            - Writes fragments.list
+            - Executes concatenator inside Blender.
+
+fragmentBuilder.py  - Executed inside Blender by main.py
+                    - Reads each entity, and creates an object with an empty mesh.
+                        Accepts these inputs:
+                        - settings.py
+                        - arguments from main.py (entityType, baseFile, workingPath)
+                        - entityDataBase
+                        - baseFile
+                    - Outputs fragments as .blend files (one for each type) to the workingPath.
+
+concatenator.py - Executed inside Blender by main.py
+                - Concatenates all the fragments together.
+                    Accepts these imputs:
+                    - arguments (outputPath, finalFilename, workingPath)
+                    - fragments.list
+                    - Outputs a .blend file into the outputPath.         
+
+floompher.py    - reads every object in the blend file, and replaces its mesh with one imported from the Mesh/ folder.
+                - Outputs a .blend file into the outputPath. (Overwrites the .blend file written by concatenator.py)
+
+==========
+Variables:
+==========
+
+Clusters:
+settings - dict()  - For when I can't decide which variable to pass to a module, so I pass them all.
+arguments - dict() - 
+
+Variables that store paths and filenames:
+baseFile      - string() - filename of the base eg, "mybase.base". This should always have the extension ".base".
+basePath      - string() - folder that contains baseFile
+cvsFile       - string() - filename of the entity database eg, "entitytable.csv"
+meshPath      - string() - folder where you keep all your .blend files for importing eg, "Mesh/" or c:\Factorio\Mesh\". It will be combined with the filename in the csv eg, "Mesh/" + "transport-belt.blend"
+outputPath    - string() - This folder will be created by the main python program. It will contain the final .blend file, and the working folder, eg. "output/"
+workingPath   - string() - This path will be derived from the variable baseFile, by stripping of the extension ".base". This folder will be created inside the outputPath, eg, output/mybase/
+finalFilename - string() - this filename will be derived from the variable baseFile, by stripping of the extension ".base", and adding the extension ".blend"
+
+Data sourced from Factorio:
+Universe     - dict()   - Keys: "surfaces" and "metadata". Values: json encoded surfaces and json encoded listOfTypes.
+listOfTypes  - list()   - One list of all known entity types across all surfaces. (Can be created in the mod, or the python program.)
+entityType   - string() - That one type that the fragmentBuilder will be working on during the current loop.
+sn           - int()    - Is the key for SurfaceNames.
+surfaceName  - string() - Holds the name of a single surface. Is stored as the value of surfaceNames
+surfaceNames - dict()   - Key: sn=int(), value=surfaceName=string(). Contains string names of every surface.
+surfaces     - dict()   - Key: surfaceName=string(), name of surface, eg "nauvis"; value: entities=json encoded list() of entities.
+surface      - list()   - Value: entityProperties=json encoded dict().
+entityProperties - dict() - Key: string(), name of property, eg "name"; value: string or number eg, "transport-belt".
+fragmentList - list()   - Contains an index of of all the fragment files. This list will be written to a file in the workingPath, for use by the concatenator.py.
+
+Import data:
+entityDataBase      - dict() - Key: string(), entityProperties["name"], eg transport-belt - Value: json encoded dict()
+entityImportDetails - dict() - Key: string eg, "filename" - Value: string or number eg, "transport-belt.blend"
+
+Blender specific details:
+datum               - string() - Filename of the entity currently being imported eg, "transport-belt.blend"
+entitiesInUse       - list() - Contains a list of all the Mesh/ files that have been imported. It is used to prevent them from being imported more than once.
+
+Progress report:
+progress                           - dict() - Data on the progress of current import. Contains the following Keys:
+numberOfSurfacesCompleted          - int() - Progress meter of the number of surfaces that have been sucessfully imported.
+numberOfSurfaces                   - int() - Total number of surfaces to be imported.
+numberOfEntitiesOnSurfaceCompleted - int() - Progress meter of the number of entities that have been sucessfully imported from THE CURRENT surface.
+numberOfEntitiesOnSurface          - int() - Total number of entities to be imported from the current surface.
+totalNumberOfEntitiesCompleted     - int() - Progress meter of the number of entities that have been sucessfully imported from ALL surface.
+totalNumberOfEntities              - int() - Total number of entities on all surfaces as read from the first line in the .base file.
+totalNumberOfIgnoredEntities       - int() - Total number of entities from the .base file that will not be built.
+coetos                             - dict() - key: surfaceName, value json encoded dict()
+                                                eg, coetos = json.loads(progress["cortos"])
+                                                    cOETOS = json.loads(cortos["nauvis"])
+                                                    cOETOS["rocket-silo"] = 1
+reportVisibleTypes                 - dict()- key: str(), name of the entity; value: int() count of every entity with that name that will be built.
+reportInvisibleTypes               - dict()- key: str(), name of the entity; value: int() count of every entity with that name that will be ignored.
+unknownEntities                    - list() - Contains the names of all the entities that have been found in the .base file, that are not in the csv file.
+timeStart                          - Time at start of program
+timeStamp                          - Time at start of entity
+event                              - dict() - key: timestamp, value: log of every import or duplication.
+
+=================
+Files and Folders
+=================
+
+Variable name:      baseFile              
+Default value:      mybase.base
+Extension:          .base
+Default location:   Factorio/script-output/
+Created by:         TheThirdDimension_DataExporter
+Used by:            main.py
+                    fragmentBuilder.py
+Description:        This file contains json encoded snapshot of every entity on every surface in the game.
+
+Variable name:      cvsFile - string() - filename of the entity database eg, "entitytable.csv"
+Default value:      assets/database_MasterList.csv
+Default location:   Factorio/TheThirdDimension/assets/
+Used by:            main.py
+                    fragmentBuilder.py
+
+Variable name:      outputPath
+Default value:      output/
+Default location:   same as python code
+Long path:          Factorio/TheThirdDimension/output/
+used by:            main.py
+                    fragmentBuilder.py
+                    concatenator.py
+Description:        This determines the location of blender files created by fragmentBuilder.py and concatenator.py
+
+Variable name:      workingPath
+Default value:      mybase/
+Default location:   output/
+Long path:          Factorio/TheThirdDimension/output/mybase/
+description:        Location of temporary fragments, eg. "transport-belt.blend"
+
+Variable name:      fragment
+Example value:      transport-belt.blend
+Default location:   output/mybase/
+Created by:         fragmentBuilder.py
+Used by:            concatenator.py
+description:        Fragment files contain all the entities of one type.
+                    Fragment files should be concatenated automatically by concatenator.py. At which time, they can be deleted by the user.
+
+Variable name:      finalFilename
+Default value:      mybase.blend
+Default location:   output/
+description:        This file should contain all of your entities. You can add more at any time by operating fragmentBuilder manually, then importing the fragments manually.
+
