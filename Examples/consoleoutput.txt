@@ -1,0 +1,1442 @@
+$ python3 main.py --baseFile mybase.base
+Importing settings
+
+Checking basePath...
+basePath ok.
+
+Checking baseFile...
+baseFile ok.
+
+Checking csvFile...
+csvFile ok.
+
+Checking meshPath...
+meshPath ok.
+
+Checking dependancies...
+fragmentBuilder.py  ok.
+concatenator.py  ok.
+floompher.py  ok.
+
+Checking Blender...
+Found Blender test. Executing now...
+Saved session recovery to '/tmp/quit.blend'
+Blender executed sucessfully!
+
+Continuing...
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Collecting data...
+== Now building shortlist
+== Processing items on nauvis
+== Surface 1 of 1
+
+{"character": 1}
+{"simple-entity-with-owner": 6}
+{"container": 6}
+{"fish": 31}
+{"simple-entity": 102}
+{"cliff": 660}
+{"resource": 2366}
+{"tree": 2933}
+
+Total invisible entities: 6105
+
+
+
+{"offshore-pump": 1}
+{"boiler": 1}
+{"splitter": 2}
+{"generator": 2}
+{"lab": 3}
+{"assembling-machine": 4}
+{"underground-belt": 6}
+{"furnace": 8}
+{"mining-drill": 18}
+{"inserter": 28}
+{"electric-pole": 39}
+{"pipe": 107}
+{"transport-belt": 332}
+
+Total visible entities: 551
+
+
+
+no unknown entities
+== 13 types in shortlist
+== dict_keys(['offshore-pump', 'pipe', 'lab', 'inserter', 'transport-belt', 'electric-pole', 'assembling-machine', 'furnace', 'underground-belt', 'mining-drill', 'generator', 'boiler', 'splitter'])
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType offshore-pump --range 0 1000 --frag output/mybase/fragment-nauvis-offshore-pump-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-offshore-pump-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis offshore-pump
+= Saving fragment output/mybase/fragment-nauvis-offshore-pump-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-offshore-pump-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType pipe --range 0 1000 --frag output/mybase/fragment-nauvis-pipe-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-pipe-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis pipe
+= Entity number 2 nauvis pipe
+= Entity number 3 nauvis pipe
+= Entity number 4 nauvis pipe
+= Entity number 5 nauvis pipe
+= Entity number 6 nauvis pipe
+= Entity number 7 nauvis pipe
+= Entity number 8 nauvis pipe
+= Entity number 9 nauvis pipe
+= Entity number 10 nauvis pipe
+= Entity number 11 nauvis pipe
+= Entity number 12 nauvis pipe
+= Entity number 13 nauvis pipe
+= Entity number 14 nauvis pipe
+= Entity number 15 nauvis pipe
+= Entity number 16 nauvis pipe
+= Entity number 17 nauvis pipe
+= Entity number 18 nauvis pipe
+= Entity number 19 nauvis pipe
+= Entity number 20 nauvis pipe
+= Entity number 21 nauvis pipe
+= Entity number 22 nauvis pipe
+= Entity number 23 nauvis pipe
+= Entity number 24 nauvis pipe
+= Entity number 25 nauvis pipe
+= Entity number 26 nauvis pipe
+= Entity number 27 nauvis pipe
+= Entity number 28 nauvis pipe
+= Entity number 29 nauvis pipe
+= Entity number 30 nauvis pipe
+= Entity number 31 nauvis pipe
+= Entity number 32 nauvis pipe
+= Entity number 33 nauvis pipe
+= Entity number 34 nauvis pipe
+= Entity number 35 nauvis pipe
+= Entity number 36 nauvis pipe
+= Entity number 37 nauvis pipe
+= Entity number 38 nauvis pipe
+= Entity number 39 nauvis pipe
+= Entity number 40 nauvis pipe
+= Entity number 41 nauvis pipe
+= Entity number 42 nauvis pipe
+= Entity number 43 nauvis pipe
+= Entity number 44 nauvis pipe
+= Entity number 45 nauvis pipe
+= Entity number 46 nauvis pipe
+= Entity number 47 nauvis pipe
+= Entity number 48 nauvis pipe
+= Entity number 49 nauvis pipe
+= Entity number 50 nauvis pipe
+= Entity number 51 nauvis pipe
+= Entity number 52 nauvis pipe
+= Entity number 53 nauvis pipe
+= Entity number 54 nauvis pipe
+= Entity number 55 nauvis pipe
+= Entity number 56 nauvis pipe
+= Entity number 57 nauvis pipe
+= Entity number 58 nauvis pipe
+= Entity number 59 nauvis pipe
+= Entity number 60 nauvis pipe
+= Entity number 61 nauvis pipe
+= Entity number 62 nauvis pipe
+= Entity number 63 nauvis pipe
+= Entity number 64 nauvis pipe
+= Entity number 65 nauvis pipe
+= Entity number 66 nauvis pipe
+= Entity number 67 nauvis pipe
+= Entity number 68 nauvis pipe
+= Entity number 69 nauvis pipe
+= Entity number 70 nauvis pipe
+= Entity number 71 nauvis pipe
+= Entity number 72 nauvis pipe
+= Entity number 73 nauvis pipe
+= Entity number 74 nauvis pipe
+= Entity number 75 nauvis pipe
+= Entity number 76 nauvis pipe
+= Entity number 77 nauvis pipe
+= Entity number 78 nauvis pipe
+= Entity number 79 nauvis pipe
+= Entity number 80 nauvis pipe
+= Entity number 81 nauvis pipe
+= Entity number 82 nauvis pipe
+= Entity number 83 nauvis pipe
+= Entity number 84 nauvis pipe
+= Entity number 85 nauvis pipe
+= Entity number 86 nauvis pipe
+= Entity number 87 nauvis pipe
+= Entity number 88 nauvis pipe
+= Entity number 89 nauvis pipe
+= Entity number 90 nauvis pipe
+= Entity number 91 nauvis pipe
+= Entity number 92 nauvis pipe
+= Entity number 93 nauvis pipe
+= Entity number 94 nauvis pipe
+= Entity number 95 nauvis pipe
+= Entity number 96 nauvis pipe
+= Entity number 97 nauvis pipe
+= Entity number 98 nauvis pipe
+= Entity number 99 nauvis pipe
+= Entity number 100 nauvis pipe
+= Entity number 101 nauvis pipe
+= Entity number 102 nauvis pipe
+= Entity number 103 nauvis pipe
+= Entity number 104 nauvis pipe
+= Entity number 105 nauvis pipe
+= Entity number 106 nauvis pipe
+= Entity number 107 nauvis pipe
+= Saving fragment output/mybase/fragment-nauvis-pipe-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-pipe-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType lab --range 0 1000 --frag output/mybase/fragment-nauvis-lab-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-lab-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis lab
+= Entity number 2 nauvis lab
+= Entity number 3 nauvis lab
+= Saving fragment output/mybase/fragment-nauvis-lab-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-lab-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType inserter --range 0 1000 --frag output/mybase/fragment-nauvis-inserter-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-inserter-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis inserter
+= Entity number 2 nauvis inserter
+= Entity number 3 nauvis inserter
+= Entity number 4 nauvis inserter
+= Entity number 5 nauvis inserter
+= Entity number 6 nauvis inserter
+= Entity number 7 nauvis inserter
+= Entity number 8 nauvis inserter
+= Entity number 9 nauvis inserter
+= Entity number 10 nauvis inserter
+= Entity number 11 nauvis inserter
+= Entity number 12 nauvis inserter
+= Entity number 13 nauvis inserter
+= Entity number 14 nauvis inserter
+= Entity number 15 nauvis inserter
+= Entity number 16 nauvis inserter
+= Entity number 17 nauvis inserter
+= Entity number 18 nauvis inserter
+= Entity number 19 nauvis inserter
+= Entity number 20 nauvis burner-inserter
+= Entity number 21 nauvis inserter
+= Entity number 22 nauvis inserter
+= Entity number 23 nauvis inserter
+= Entity number 24 nauvis inserter
+= Entity number 25 nauvis inserter
+= Entity number 26 nauvis inserter
+= Entity number 27 nauvis inserter
+= Entity number 28 nauvis inserter
+= Saving fragment output/mybase/fragment-nauvis-inserter-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-inserter-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType transport-belt --range 0 1000 --frag output/mybase/fragment-nauvis-transport-belt-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-transport-belt-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis transport-belt
+= Entity number 2 nauvis transport-belt
+= Entity number 3 nauvis transport-belt
+= Entity number 4 nauvis transport-belt
+= Entity number 5 nauvis transport-belt
+= Entity number 6 nauvis transport-belt
+= Entity number 7 nauvis transport-belt
+= Entity number 8 nauvis transport-belt
+= Entity number 9 nauvis transport-belt
+= Entity number 10 nauvis transport-belt
+= Entity number 11 nauvis transport-belt
+= Entity number 12 nauvis transport-belt
+= Entity number 13 nauvis transport-belt
+= Entity number 14 nauvis transport-belt
+= Entity number 15 nauvis transport-belt
+= Entity number 16 nauvis transport-belt
+= Entity number 17 nauvis transport-belt
+= Entity number 18 nauvis transport-belt
+= Entity number 19 nauvis transport-belt
+= Entity number 20 nauvis transport-belt
+= Entity number 21 nauvis transport-belt
+= Entity number 22 nauvis transport-belt
+= Entity number 23 nauvis transport-belt
+= Entity number 24 nauvis transport-belt
+= Entity number 25 nauvis transport-belt
+= Entity number 26 nauvis transport-belt
+= Entity number 27 nauvis transport-belt
+= Entity number 28 nauvis transport-belt
+= Entity number 29 nauvis transport-belt
+= Entity number 30 nauvis transport-belt
+= Entity number 31 nauvis transport-belt
+= Entity number 32 nauvis transport-belt
+= Entity number 33 nauvis transport-belt
+= Entity number 34 nauvis transport-belt
+= Entity number 35 nauvis transport-belt
+= Entity number 36 nauvis transport-belt
+= Entity number 37 nauvis transport-belt
+= Entity number 38 nauvis transport-belt
+= Entity number 39 nauvis transport-belt
+= Entity number 40 nauvis transport-belt
+= Entity number 41 nauvis transport-belt
+= Entity number 42 nauvis transport-belt
+= Entity number 43 nauvis transport-belt
+= Entity number 44 nauvis transport-belt
+= Entity number 45 nauvis transport-belt
+= Entity number 46 nauvis transport-belt
+= Entity number 47 nauvis transport-belt
+= Entity number 48 nauvis transport-belt
+= Entity number 49 nauvis transport-belt
+= Entity number 50 nauvis transport-belt
+= Entity number 51 nauvis transport-belt
+= Entity number 52 nauvis transport-belt
+= Entity number 53 nauvis transport-belt
+= Entity number 54 nauvis transport-belt
+= Entity number 55 nauvis transport-belt
+= Entity number 56 nauvis transport-belt
+= Entity number 57 nauvis transport-belt
+= Entity number 58 nauvis transport-belt
+= Entity number 59 nauvis transport-belt
+= Entity number 60 nauvis transport-belt
+= Entity number 61 nauvis transport-belt
+= Entity number 62 nauvis transport-belt
+= Entity number 63 nauvis transport-belt
+= Entity number 64 nauvis transport-belt
+= Entity number 65 nauvis transport-belt
+= Entity number 66 nauvis transport-belt
+= Entity number 67 nauvis transport-belt
+= Entity number 68 nauvis transport-belt
+= Entity number 69 nauvis transport-belt
+= Entity number 70 nauvis transport-belt
+= Entity number 71 nauvis transport-belt
+= Entity number 72 nauvis transport-belt
+= Entity number 73 nauvis transport-belt
+= Entity number 74 nauvis transport-belt
+= Entity number 75 nauvis transport-belt
+= Entity number 76 nauvis transport-belt
+= Entity number 77 nauvis transport-belt
+= Entity number 78 nauvis transport-belt
+= Entity number 79 nauvis transport-belt
+= Entity number 80 nauvis transport-belt
+= Entity number 81 nauvis transport-belt
+= Entity number 82 nauvis transport-belt
+= Entity number 83 nauvis transport-belt
+= Entity number 84 nauvis transport-belt
+= Entity number 85 nauvis transport-belt
+= Entity number 86 nauvis transport-belt
+= Entity number 87 nauvis transport-belt
+= Entity number 88 nauvis transport-belt
+= Entity number 89 nauvis transport-belt
+= Entity number 90 nauvis transport-belt
+= Entity number 91 nauvis transport-belt
+= Entity number 92 nauvis transport-belt
+= Entity number 93 nauvis transport-belt
+= Entity number 94 nauvis transport-belt
+= Entity number 95 nauvis transport-belt
+= Entity number 96 nauvis transport-belt
+= Entity number 97 nauvis transport-belt
+= Entity number 98 nauvis transport-belt
+= Entity number 99 nauvis transport-belt
+= Entity number 100 nauvis transport-belt
+= Entity number 101 nauvis transport-belt
+= Entity number 102 nauvis transport-belt
+= Entity number 103 nauvis transport-belt
+= Entity number 104 nauvis transport-belt
+= Entity number 105 nauvis transport-belt
+= Entity number 106 nauvis transport-belt
+= Entity number 107 nauvis transport-belt
+= Entity number 108 nauvis transport-belt
+= Entity number 109 nauvis transport-belt
+= Entity number 110 nauvis transport-belt
+= Entity number 111 nauvis transport-belt
+= Entity number 112 nauvis transport-belt
+= Entity number 113 nauvis transport-belt
+= Entity number 114 nauvis transport-belt
+= Entity number 115 nauvis transport-belt
+= Entity number 116 nauvis transport-belt
+= Entity number 117 nauvis transport-belt
+= Entity number 118 nauvis transport-belt
+= Entity number 119 nauvis transport-belt
+= Entity number 120 nauvis transport-belt
+= Entity number 121 nauvis transport-belt
+= Entity number 122 nauvis transport-belt
+= Entity number 123 nauvis transport-belt
+= Entity number 124 nauvis transport-belt
+= Entity number 125 nauvis transport-belt
+= Entity number 126 nauvis transport-belt
+= Entity number 127 nauvis transport-belt
+= Entity number 128 nauvis transport-belt
+= Entity number 129 nauvis transport-belt
+= Entity number 130 nauvis transport-belt
+= Entity number 131 nauvis transport-belt
+= Entity number 132 nauvis transport-belt
+= Entity number 133 nauvis transport-belt
+= Entity number 134 nauvis transport-belt
+= Entity number 135 nauvis transport-belt
+= Entity number 136 nauvis transport-belt
+= Entity number 137 nauvis transport-belt
+= Entity number 138 nauvis transport-belt
+= Entity number 139 nauvis transport-belt
+= Entity number 140 nauvis transport-belt
+= Entity number 141 nauvis transport-belt
+= Entity number 142 nauvis transport-belt
+= Entity number 143 nauvis transport-belt
+= Entity number 144 nauvis transport-belt
+= Entity number 145 nauvis transport-belt
+= Entity number 146 nauvis transport-belt
+= Entity number 147 nauvis transport-belt
+= Entity number 148 nauvis transport-belt
+= Entity number 149 nauvis transport-belt
+= Entity number 150 nauvis transport-belt
+= Entity number 151 nauvis transport-belt
+= Entity number 152 nauvis transport-belt
+= Entity number 153 nauvis transport-belt
+= Entity number 154 nauvis transport-belt
+= Entity number 155 nauvis transport-belt
+= Entity number 156 nauvis transport-belt
+= Entity number 157 nauvis transport-belt
+= Entity number 158 nauvis transport-belt
+= Entity number 159 nauvis transport-belt
+= Entity number 160 nauvis transport-belt
+= Entity number 161 nauvis transport-belt
+= Entity number 162 nauvis transport-belt
+= Entity number 163 nauvis transport-belt
+= Entity number 164 nauvis transport-belt
+= Entity number 165 nauvis transport-belt
+= Entity number 166 nauvis transport-belt
+= Entity number 167 nauvis transport-belt
+= Entity number 168 nauvis transport-belt
+= Entity number 169 nauvis transport-belt
+= Entity number 170 nauvis transport-belt
+= Entity number 171 nauvis transport-belt
+= Entity number 172 nauvis transport-belt
+= Entity number 173 nauvis transport-belt
+= Entity number 174 nauvis transport-belt
+= Entity number 175 nauvis transport-belt
+= Entity number 176 nauvis transport-belt
+= Entity number 177 nauvis transport-belt
+= Entity number 178 nauvis transport-belt
+= Entity number 179 nauvis transport-belt
+= Entity number 180 nauvis transport-belt
+= Entity number 181 nauvis transport-belt
+= Entity number 182 nauvis transport-belt
+= Entity number 183 nauvis transport-belt
+= Entity number 184 nauvis transport-belt
+= Entity number 185 nauvis transport-belt
+= Entity number 186 nauvis transport-belt
+= Entity number 187 nauvis transport-belt
+= Entity number 188 nauvis transport-belt
+= Entity number 189 nauvis transport-belt
+= Entity number 190 nauvis transport-belt
+= Entity number 191 nauvis transport-belt
+= Entity number 192 nauvis transport-belt
+= Entity number 193 nauvis transport-belt
+= Entity number 194 nauvis transport-belt
+= Entity number 195 nauvis transport-belt
+= Entity number 196 nauvis transport-belt
+= Entity number 197 nauvis transport-belt
+= Entity number 198 nauvis transport-belt
+= Entity number 199 nauvis transport-belt
+= Entity number 200 nauvis transport-belt
+= Entity number 201 nauvis transport-belt
+= Entity number 202 nauvis transport-belt
+= Entity number 203 nauvis transport-belt
+= Entity number 204 nauvis transport-belt
+= Entity number 205 nauvis transport-belt
+= Entity number 206 nauvis transport-belt
+= Entity number 207 nauvis transport-belt
+= Entity number 208 nauvis transport-belt
+= Entity number 209 nauvis transport-belt
+= Entity number 210 nauvis transport-belt
+= Entity number 211 nauvis transport-belt
+= Entity number 212 nauvis transport-belt
+= Entity number 213 nauvis transport-belt
+= Entity number 214 nauvis transport-belt
+= Entity number 215 nauvis transport-belt
+= Entity number 216 nauvis transport-belt
+= Entity number 217 nauvis transport-belt
+= Entity number 218 nauvis transport-belt
+= Entity number 219 nauvis transport-belt
+= Entity number 220 nauvis transport-belt
+= Entity number 221 nauvis transport-belt
+= Entity number 222 nauvis transport-belt
+= Entity number 223 nauvis transport-belt
+= Entity number 224 nauvis transport-belt
+= Entity number 225 nauvis transport-belt
+= Entity number 226 nauvis transport-belt
+= Entity number 227 nauvis transport-belt
+= Entity number 228 nauvis transport-belt
+= Entity number 229 nauvis transport-belt
+= Entity number 230 nauvis transport-belt
+= Entity number 231 nauvis transport-belt
+= Entity number 232 nauvis transport-belt
+= Entity number 233 nauvis transport-belt
+= Entity number 234 nauvis transport-belt
+= Entity number 235 nauvis transport-belt
+= Entity number 236 nauvis transport-belt
+= Entity number 237 nauvis transport-belt
+= Entity number 238 nauvis transport-belt
+= Entity number 239 nauvis transport-belt
+= Entity number 240 nauvis transport-belt
+= Entity number 241 nauvis transport-belt
+= Entity number 242 nauvis transport-belt
+= Entity number 243 nauvis transport-belt
+= Entity number 244 nauvis transport-belt
+= Entity number 245 nauvis transport-belt
+= Entity number 246 nauvis transport-belt
+= Entity number 247 nauvis transport-belt
+= Entity number 248 nauvis transport-belt
+= Entity number 249 nauvis transport-belt
+= Entity number 250 nauvis transport-belt
+= Entity number 251 nauvis transport-belt
+= Entity number 252 nauvis transport-belt
+= Entity number 253 nauvis transport-belt
+= Entity number 254 nauvis transport-belt
+= Entity number 255 nauvis transport-belt
+= Entity number 256 nauvis transport-belt
+= Entity number 257 nauvis transport-belt
+= Entity number 258 nauvis transport-belt
+= Entity number 259 nauvis transport-belt
+= Entity number 260 nauvis transport-belt
+= Entity number 261 nauvis transport-belt
+= Entity number 262 nauvis transport-belt
+= Entity number 263 nauvis transport-belt
+= Entity number 264 nauvis transport-belt
+= Entity number 265 nauvis transport-belt
+= Entity number 266 nauvis transport-belt
+= Entity number 267 nauvis transport-belt
+= Entity number 268 nauvis transport-belt
+= Entity number 269 nauvis transport-belt
+= Entity number 270 nauvis transport-belt
+= Entity number 271 nauvis transport-belt
+= Entity number 272 nauvis transport-belt
+= Entity number 273 nauvis transport-belt
+= Entity number 274 nauvis transport-belt
+= Entity number 275 nauvis transport-belt
+= Entity number 276 nauvis transport-belt
+= Entity number 277 nauvis transport-belt
+= Entity number 278 nauvis transport-belt
+= Entity number 279 nauvis transport-belt
+= Entity number 280 nauvis transport-belt
+= Entity number 281 nauvis transport-belt
+= Entity number 282 nauvis transport-belt
+= Entity number 283 nauvis transport-belt
+= Entity number 284 nauvis transport-belt
+= Entity number 285 nauvis transport-belt
+= Entity number 286 nauvis transport-belt
+= Entity number 287 nauvis transport-belt
+= Entity number 288 nauvis transport-belt
+= Entity number 289 nauvis transport-belt
+= Entity number 290 nauvis transport-belt
+= Entity number 291 nauvis transport-belt
+= Entity number 292 nauvis transport-belt
+= Entity number 293 nauvis transport-belt
+= Entity number 294 nauvis transport-belt
+= Entity number 295 nauvis transport-belt
+= Entity number 296 nauvis transport-belt
+= Entity number 297 nauvis transport-belt
+= Entity number 298 nauvis transport-belt
+= Entity number 299 nauvis transport-belt
+= Entity number 300 nauvis transport-belt
+= Entity number 301 nauvis transport-belt
+= Entity number 302 nauvis transport-belt
+= Entity number 303 nauvis transport-belt
+= Entity number 304 nauvis transport-belt
+= Entity number 305 nauvis transport-belt
+= Entity number 306 nauvis transport-belt
+= Entity number 307 nauvis transport-belt
+= Entity number 308 nauvis transport-belt
+= Entity number 309 nauvis transport-belt
+= Entity number 310 nauvis transport-belt
+= Entity number 311 nauvis transport-belt
+= Entity number 312 nauvis transport-belt
+= Entity number 313 nauvis transport-belt
+= Entity number 314 nauvis transport-belt
+= Entity number 315 nauvis transport-belt
+= Entity number 316 nauvis transport-belt
+= Entity number 317 nauvis transport-belt
+= Entity number 318 nauvis transport-belt
+= Entity number 319 nauvis transport-belt
+= Entity number 320 nauvis transport-belt
+= Entity number 321 nauvis transport-belt
+= Entity number 322 nauvis transport-belt
+= Entity number 323 nauvis transport-belt
+= Entity number 324 nauvis transport-belt
+= Entity number 325 nauvis transport-belt
+= Entity number 326 nauvis transport-belt
+= Entity number 327 nauvis transport-belt
+= Entity number 328 nauvis transport-belt
+= Entity number 329 nauvis transport-belt
+= Entity number 330 nauvis transport-belt
+= Entity number 331 nauvis transport-belt
+= Entity number 332 nauvis transport-belt
+= Saving fragment output/mybase/fragment-nauvis-transport-belt-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-transport-belt-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType electric-pole --range 0 1000 --frag output/mybase/fragment-nauvis-electric-pole-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-electric-pole-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis medium-electric-pole
+= Entity number 2 nauvis medium-electric-pole
+= Entity number 3 nauvis medium-electric-pole
+= Entity number 4 nauvis medium-electric-pole
+= Entity number 5 nauvis medium-electric-pole
+= Entity number 6 nauvis medium-electric-pole
+= Entity number 7 nauvis medium-electric-pole
+= Entity number 8 nauvis medium-electric-pole
+= Entity number 9 nauvis medium-electric-pole
+= Entity number 10 nauvis medium-electric-pole
+= Entity number 11 nauvis medium-electric-pole
+= Entity number 12 nauvis medium-electric-pole
+= Entity number 13 nauvis medium-electric-pole
+= Entity number 14 nauvis medium-electric-pole
+= Entity number 15 nauvis medium-electric-pole
+= Entity number 16 nauvis medium-electric-pole
+= Entity number 17 nauvis medium-electric-pole
+= Entity number 18 nauvis medium-electric-pole
+= Entity number 19 nauvis medium-electric-pole
+= Entity number 20 nauvis medium-electric-pole
+= Entity number 21 nauvis medium-electric-pole
+= Entity number 22 nauvis medium-electric-pole
+= Entity number 23 nauvis medium-electric-pole
+= Entity number 24 nauvis medium-electric-pole
+= Entity number 25 nauvis medium-electric-pole
+= Entity number 26 nauvis medium-electric-pole
+= Entity number 27 nauvis medium-electric-pole
+= Entity number 28 nauvis medium-electric-pole
+= Entity number 29 nauvis medium-electric-pole
+= Entity number 30 nauvis medium-electric-pole
+= Entity number 31 nauvis medium-electric-pole
+= Entity number 32 nauvis medium-electric-pole
+= Entity number 33 nauvis medium-electric-pole
+= Entity number 34 nauvis medium-electric-pole
+= Entity number 35 nauvis medium-electric-pole
+= Entity number 36 nauvis medium-electric-pole
+= Entity number 37 nauvis medium-electric-pole
+= Entity number 38 nauvis medium-electric-pole
+= Entity number 39 nauvis medium-electric-pole
+= Saving fragment output/mybase/fragment-nauvis-electric-pole-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-electric-pole-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType assembling-machine --range 0 1000 --frag output/mybase/fragment-nauvis-assembling-machine-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-assembling-machine-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis assembling-machine-2
+= Entity number 2 nauvis assembling-machine-2
+= Entity number 3 nauvis assembling-machine-2
+= Entity number 4 nauvis assembling-machine-2
+= Saving fragment output/mybase/fragment-nauvis-assembling-machine-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-assembling-machine-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType furnace --range 0 1000 --frag output/mybase/fragment-nauvis-furnace-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-furnace-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis stone-furnace
+= Entity number 2 nauvis stone-furnace
+= Entity number 3 nauvis stone-furnace
+= Entity number 4 nauvis stone-furnace
+= Entity number 5 nauvis stone-furnace
+= Entity number 6 nauvis stone-furnace
+= Entity number 7 nauvis stone-furnace
+= Entity number 8 nauvis stone-furnace
+= Saving fragment output/mybase/fragment-nauvis-furnace-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-furnace-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType underground-belt --range 0 1000 --frag output/mybase/fragment-nauvis-underground-belt-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-underground-belt-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis underground-belt
+= Entity number 2 nauvis underground-belt
+= Entity number 3 nauvis underground-belt
+= Entity number 4 nauvis underground-belt
+= Entity number 5 nauvis underground-belt
+= Entity number 6 nauvis underground-belt
+= Saving fragment output/mybase/fragment-nauvis-underground-belt-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-underground-belt-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType mining-drill --range 0 1000 --frag output/mybase/fragment-nauvis-mining-drill-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-mining-drill-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis electric-mining-drill
+= Entity number 2 nauvis electric-mining-drill
+= Entity number 3 nauvis electric-mining-drill
+= Entity number 4 nauvis electric-mining-drill
+= Entity number 5 nauvis electric-mining-drill
+= Entity number 6 nauvis electric-mining-drill
+= Entity number 7 nauvis electric-mining-drill
+= Entity number 8 nauvis electric-mining-drill
+= Entity number 9 nauvis electric-mining-drill
+= Entity number 10 nauvis electric-mining-drill
+= Entity number 11 nauvis electric-mining-drill
+= Entity number 12 nauvis electric-mining-drill
+= Entity number 13 nauvis electric-mining-drill
+= Entity number 14 nauvis electric-mining-drill
+= Entity number 15 nauvis electric-mining-drill
+= Entity number 16 nauvis electric-mining-drill
+= Entity number 17 nauvis electric-mining-drill
+= Entity number 18 nauvis electric-mining-drill
+= Saving fragment output/mybase/fragment-nauvis-mining-drill-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-mining-drill-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType generator --range 0 1000 --frag output/mybase/fragment-nauvis-generator-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-generator-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis steam-engine
+= Entity number 2 nauvis steam-engine
+= Saving fragment output/mybase/fragment-nauvis-generator-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-generator-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType boiler --range 0 1000 --frag output/mybase/fragment-nauvis-boiler-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-boiler-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis boiler
+= Saving fragment output/mybase/fragment-nauvis-boiler-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-boiler-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+== running> blender --python fragmentBuilder.py --no-window-focus --  --baseFile mybase.base --workingPath mybase/ --surfaceName nauvis --entityType splitter --range 0 1000 --frag output/mybase/fragment-nauvis-splitter-0.blend 
+
+Importing settings
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Importing entityDatabase assets/database_MasterList.csv
+Importing ../script-output/mybase.base
+Creating collection  nauvis-splitter-fragment
+= Processing items on nauvis
+= Entity number 1 nauvis splitter
+= Entity number 2 nauvis splitter
+= Saving fragment output/mybase/fragment-nauvis-splitter-0.blend
+Info: Total files 0 | Changed 0 | Failed 0
+Info: Saved "fragment-nauvis-splitter-0.blend"
+=completed
+
+Saved session recovery to '/tmp/quit.blend'
+Writing fragment list
+
+== Concatenating fragments
+== Running> blender --python concatenator.py --no-window-focus -- --outputPath output/ --finalFilename mybase.blend --workingPath mybase/ 
+
+Deleting the default objects.
+Info: Deleted 3 object(s)
+Reading fragment list
+> Total number of fragments 13
+> from  output/mybase/fragment-nauvis-offshore-pump-0.blend  Importing nauvis-offshore-pump-fragment
+Creating collection  nauvis
+Creating collection  nauvis-offshore-pump
+> from  output/mybase/fragment-nauvis-pipe-0.blend  Importing nauvis-pipe-fragment
+Creating collection  nauvis-pipe
+> from  output/mybase/fragment-nauvis-lab-0.blend  Importing nauvis-lab-fragment
+Creating collection  nauvis-lab
+> from  output/mybase/fragment-nauvis-inserter-0.blend  Importing nauvis-inserter-fragment
+Creating collection  nauvis-inserter
+> from  output/mybase/fragment-nauvis-transport-belt-0.blend  Importing nauvis-transport-belt-fragment
+Creating collection  nauvis-transport-belt
+> from  output/mybase/fragment-nauvis-electric-pole-0.blend  Importing nauvis-electric-pole-fragment
+Creating collection  nauvis-electric-pole
+> from  output/mybase/fragment-nauvis-assembling-machine-0.blend  Importing nauvis-assembling-machine-fragment
+Creating collection  nauvis-assembling-machine
+> from  output/mybase/fragment-nauvis-furnace-0.blend  Importing nauvis-furnace-fragment
+Creating collection  nauvis-furnace
+> from  output/mybase/fragment-nauvis-underground-belt-0.blend  Importing nauvis-underground-belt-fragment
+Creating collection  nauvis-underground-belt
+> from  output/mybase/fragment-nauvis-mining-drill-0.blend  Importing nauvis-mining-drill-fragment
+Creating collection  nauvis-mining-drill
+> from  output/mybase/fragment-nauvis-generator-0.blend  Importing nauvis-generator-fragment
+Creating collection  nauvis-generator
+> from  output/mybase/fragment-nauvis-boiler-0.blend  Importing nauvis-boiler-fragment
+Creating collection  nauvis-boiler
+> from  output/mybase/fragment-nauvis-splitter-0.blend  Importing nauvis-splitter-fragment
+Creating collection  nauvis-splitter
+> saving first draft output/mybase.blend
+Info: Total files 13 | Changed 13 | Failed 0
+Info: Saved "mybase.blend"
+Saved session recovery to '/tmp/quit.blend'
+
+== Floomphing cubes into interesting entities
+== Running> blender output/mybase.blend --python floompher.py 
+
+Read blend: TheThirdDimension_087/output/mybase.blend
+Floomphing assembling-machine-2
+Importing Mesh/assembling-machine.blend
+Floomphing assembling-machine-2
+Floomphing assembling-machine-2
+Floomphing assembling-machine-2
+Floomphing boiler
+Importing Mesh/basic/boiler.blend
+Floomphing burner-inserter
+Importing Mesh/inserter.blend
+Floomphing electric-mining-drill
+Importing Mesh/electric-mining-drill.blend
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing electric-mining-drill
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing inserter
+Floomphing lab
+Importing Mesh/basic/lab.blend
+Floomphing lab
+Floomphing lab
+Floomphing medium-electric-pole
+Importing Mesh/basic/electric-pole.blend
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing medium-electric-pole
+Floomphing offshore-pump
+Importing Mesh/arrow.blend
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing pipe
+Floomphing splitter
+Importing Mesh/basic/splitter.blend
+Floomphing splitter
+Floomphing steam-engine
+Importing Mesh/basic/generator.blend
+Floomphing steam-engine
+Floomphing stone-furnace
+Importing Mesh/stone-furnace.blend
+Floomphing stone-furnace
+Floomphing stone-furnace
+Floomphing stone-furnace
+Floomphing stone-furnace
+Floomphing stone-furnace
+Floomphing stone-furnace
+Floomphing stone-furnace
+Floomphing transport-belt
+Importing Mesh/transport-belt.blend
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing transport-belt
+Floomphing underground-belt
+Importing Mesh/basic/underground-belt.blend
+Floomphing underground-belt
+Floomphing underground-belt
+Floomphing underground-belt
+Floomphing underground-belt
+Floomphing underground-belt
+Removing 12 datums now...
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Deleted 1 object(s)
+Info: Saved "mybase.blend"
+==========================================
+============== Job is done! ==============
+==========================================
+Saved session recovery to '/tmp/quit.blend'
+
+Blender quit
+$ 

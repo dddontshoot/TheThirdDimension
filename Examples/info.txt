@@ -1,0 +1,8 @@
+Here's a simple example.
+The zip file is a Factorio save game, to load it you can just drop it into Factorio/save, then load it like a normal save game.
+while in the game, typing
+/export -all
+should give you a file very similar to mybase.base
+And the final step, running main.py should give you a file similar to mybase.blend.
+
+Good luck :-)
