@@ -3,6 +3,7 @@ Export your Factorio base into Blender
 
 The data exporter is on the Factorio mod portal
 https://mods.factorio.com/mod/TheThirdDimension_DataExporter
+Development talk and support here: https://discord.gg/h8r8vpMb
 
 
 Preparations:
