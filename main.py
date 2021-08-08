@@ -97,7 +97,7 @@ for surfaceName in surfaces:
   if result != 0:
         print("== skipping all remaining fragments")
   else:
-
+   if len(settings["surfaceName"]) == 0 or if settings["surfaceName"] == surfaceName:
     surface=json.loads(surfaces[surfaceName])
     cOETOS = json.loads(coetos[surfaceName])
 
