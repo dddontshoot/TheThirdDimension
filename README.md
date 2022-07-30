@@ -4,7 +4,7 @@ Export your Factorio base into Blender
 The data exporter is on the Factorio mod portal
 https://mods.factorio.com/mod/TheThirdDimension_DataExporter
 
-Development talk and support here: https://discord.gg/h8r8vpMb
+Development talk and support here: https://discord.gg/uKSmARm74v
 
 
 Preparations:
@@ -68,7 +68,5 @@ And that's pretty much it, good luck :-)
 Known bugs:
 ===========
 - Half of the underneathies are around the wring way.
-- Half of the curved rail are around the wrong way.
-- All diagonal rail is wrong.
 - Transport-belts always use the same mesh, so corners look like intersections.
-- Walls and pipes don't automatically connect to their neighbours.
+- Gates and pipes don't automatically connect to their neighbours.
