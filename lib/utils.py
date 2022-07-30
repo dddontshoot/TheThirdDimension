@@ -81,3 +81,21 @@ def sorter(unsorted=dict()):
             else:
                 failed=0
     return(sorteddict)
+
+def distinctName(surfaces, surfaceName):
+
+    # What happens if I want to build a surface using a name that already exists?
+    # so I'll just test for the presence of a surface with that name using the WHILE command.
+    # if True: change the filename that we're testing for, by incrementing the counter.
+    # Each while loop tests for the new filename. Tested and proven!
+
+
+    x=0
+    distinctName=surfaceName
+    #test for existance of special surface names
+    while distinctName in surfaces.keys():
+            x=x+1
+            distinctName=surfaceName+str(x)
+            #print(distinctName)
+    #print("Success chosing a distinct surfaceName:",distinctName)
+    return(distinctName)

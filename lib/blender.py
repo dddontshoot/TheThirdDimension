@@ -4,8 +4,9 @@ def meshCreate():
     mesh=bpy.data.meshes.new("mesh")
     return(mesh)
 
-def newObject(entityProperties, entityImportDetails, collection, mesh):
+def newObject(entityProperties, entityImportDetails, meshAdjustmentDatabase, collection, mesh):
     import math
+    import json
 
     # Create a new object with basic mesh
     newObject = bpy.data.objects.new('new_object', mesh)
@@ -17,7 +18,17 @@ def newObject(entityProperties, entityImportDetails, collection, mesh):
         newObject[item]=entityProperties[item]
 
     # Mesh. Eventually, when we import the mesh, we'll need to know where to get it from.
-    newObject["filename"]=entityImportDetails["filename"]
+    # Lets check to see if the entity matches the criteria for mesh adjustment.
+    if entityProperties["name"] in meshAdjustmentDatabase.keys():
+        #print("found matching entity name, comparing for",entityProperties["direction"])
+        entityMeshAdjustment=json.loads(meshAdjustmentDatabase[entityProperties["name"]])
+        if str(entityProperties["direction"]) in entityMeshAdjustment.keys():
+            #print("replacing mesh...")
+            newObject["filename"] = entityMeshAdjustment[str(entityProperties["direction"])]
+        else:
+                newObject["filename"]=entityImportDetails["filename"]
+    else:
+                newObject["filename"]=entityImportDetails["filename"]
 
     # Give the object an appropriate name
     newObject.name=entityProperties["name"]
@@ -26,7 +37,7 @@ def newObject(entityProperties, entityImportDetails, collection, mesh):
     newObject.location = (entityProperties["x"], entityProperties["y"], 0)
 
     # rotation
-    r = entityProperties["direction"] * -45
+    r = (entityProperties["direction"] * -45) + entityProperties["rotationAdjustment"]
     newObject.rotation_euler[2] = math.radians(r)
 
 def collectionCreate(new, parent=bpy.context.scene.collection):

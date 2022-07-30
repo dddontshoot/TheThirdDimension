@@ -14,19 +14,18 @@ def buildReport(surfaces,settings,entityDatabase):
     # load the base data
     #surfaces = parseBaseFile(settings["basePath"]+settings["baseFile"])
 
-    print("Collecting data...")
+    print("= Collecting data...")
 
     reportVisibleTypes=dict()
     reportInvisibleTypes=dict()
     unknownEntities=list()
     coetos=dict()
-    print("== Now building shortlist")
+    #print("== Now building shortlist")
     for surfaceName in surfaces.keys():
         countOfEachTypeOnSurface=dict()
         #if surfaceName == "nauvis":
         progress["numberOfSurfacesCompleted"]=progress["numberOfSurfacesCompleted"]+1
-        print("== Processing items on",surfaceName)
-        print("== Surface", progress["numberOfSurfacesCompleted"], "of", len(surfaces))
+        print("= Cataloging items on surface", progress["numberOfSurfacesCompleted"], "of", len(surfaces),surfaceName)
         surface=json.loads(surfaces[surfaceName])
         progress["totalNumberOfEntities"]=progress["totalNumberOfEntities"]+len(surface)
         for item in surface:
@@ -43,17 +42,17 @@ def buildReport(surfaces,settings,entityDatabase):
                     entityImportDetails=json.loads(entityDatabase[entityProperties["name"]])
                     if entityImportDetails["3D"] == 1 and entityImportDetails["visible"] == 1: # The entity must be 3D and visible
                         progress["totalNumberOfEntitiesCompleted"]=progress["totalNumberOfEntitiesCompleted"]+1
-                        reportVisibleTypes = ticker(reportVisibleTypes, entityProperties["type"])
-                        countOfEachTypeOnSurface = ticker(countOfEachTypeOnSurface, entityProperties["type"])
+                        reportVisibleTypes = ticker(reportVisibleTypes, entityProperties["name"])
+                        countOfEachTypeOnSurface = ticker(countOfEachTypeOnSurface, entityProperties["name"])
                         #listOfTypes.append(entityProperties["type"]) # This is the most acurate place to generate the listOfTypes
                     else:
                         progress["numberOfIgnoredEntities"]=progress["numberOfIgnoredEntities"]+1
                         #totalinvisible=totalinvisible+1
-                        reportInvisibleTypes = ticker(reportInvisibleTypes, entityProperties["type"])
+                        reportInvisibleTypes = ticker(reportInvisibleTypes, entityProperties["name"])
         coetos[surfaceName]=json.dumps(countOfEachTypeOnSurface)
     progress["coetos"] = json.dumps(coetos)
         
-
+    print("= Finished cataloging")
     return(reportVisibleTypes,coetos,reportInvisibleTypes,unknownEntities)
 
 def reportPrint(reportVisibleTypes,reportInvisibleTypes,unknownEntities):
@@ -73,7 +72,7 @@ def reportPrint(reportVisibleTypes,reportInvisibleTypes,unknownEntities):
         print("Total invisible entities:", totalIgnored)
         print("\n\n")
     else:
-        print("No invisible types")
+        print("No invisible types\n\n")
 
     if len(reportVisibleTypes) > 0:
         reportVisibleTypes=sorter(reportVisibleTypes)
@@ -87,14 +86,16 @@ def reportPrint(reportVisibleTypes,reportInvisibleTypes,unknownEntities):
         print("Total visible entities:", totalVisible)
         print("\n\n")
     else:
-        print("No visible types")
+        print("No visible types\n\n")
 
 
     if len(unknownEntities)>0:
-        print("list of unknown entities:")
+        print("List of unknown entities:")
         for item in unknownEntities:
             print(item)
+        print(len(unknownEntities),"unknown types")
+        print("\n\n")
     else:
-        print("no unknown entities")
+        print("No unknown entities\n\n")
 
 

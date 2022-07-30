@@ -66,4 +66,9 @@ def getArgs():
         else:
             arguments["force"] = False
 
+        if "--pseudobase" in argv:
+            arguments["pseudobase"] = True
+        else:
+            arguments["pseudobase"] = False
+
         return(arguments)
