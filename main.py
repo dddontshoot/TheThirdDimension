@@ -1,3 +1,5 @@
+import lib.wall
+
 import sys
 import pathlib
 sys.path.append(str(pathlib.Path().absolute()))
@@ -16,6 +18,60 @@ import lib.systemCheck
 from lib.utils import initReporting
 import lib.report
 
+def processBasefile(surfaces, pseudobase):
+    result=0
+    reportVisibleTypes, coetos, reportInvisibleTypes, unknownEntities = lib.report.buildReport(surfaces, settings, entityDatabase)
+    listOfTypes=reportVisibleTypes.keys()
+
+    lib.report.reportPrint(reportVisibleTypes,reportInvisibleTypes,unknownEntities)
+
+    if arguments["reportOnly"] == True:
+        print("== Report has been printed, quitting...")
+        exit()
+
+    #print("==",len(listOfTypes),"types in shortlist")
+    #print("==",listOfTypes)
+    for surfaceName in surfaces:
+          if result != 0:
+                print("== skipping all remaining fragments")
+          else:
+           if len(arguments["surfaceName"]) == 0 or arguments["surfaceName"] == surfaceName:
+            print("== >>>>>>",surfaceName,arguments["surfaceName"])
+            surface=json.loads(surfaces[surfaceName])
+            cOETOS = json.loads(coetos[surfaceName])
+
+            for settings["entityType"] in cOETOS.keys():    # Don't loop from listOfEntities which contains entities that are missing from some surfaces.
+              if result != 0:
+                print("== skipping all remaining fragments")
+              else:
+
+                for start in range(0, cOETOS[settings["entityType"]], settings["entityLimit"]):
+
+                  # Ctrl+c while fragmentBuilder.py is running will terminate that process only,
+                  # This if statement stops further instances of that process from starting.
+                  if result != 0:
+                    print("== skipping all remaining fragments")
+                  else:
+                    
+                    finish = start + settings["entityLimit"]
+
+                    # We're about to create a fragment, lets document it so the concatenator can find it later.
+                    
+                    fragment=dict()
+                    fragment["filename"]=settings["outputPath"]+settings["workingPath"]+"fragment-"+surfaceName+"-"+settings["entityType"]+"-"+str(start)+".blend"
+                    fragment["surfaceName"]=surfaceName
+                    fragment["entityType"]=settings["entityType"]
+                    fragment["collection"]=surfaceName+"-"+settings["entityType"]+"-fragment"
+                    fragmentList.append(json.dumps(fragment))
+
+                    # Execute the fragment builder inside Blender.
+                    command="blender --python fragmentBuilder.py --no-window-focus -- " + " --baseFile " + settings["baseFile"] + " --workingPath " + settings["workingPath"] + " --surfaceName " + surfaceName + " --entityType " + settings["entityType"] + " --range " + str(start) + " " + str(finish) + " --frag " + fragment["filename"] + " " + pseudobase
+                    print("==",surfaceName," >>> ",settings["entityType"],"==")
+                    print("== running>",command,"\n")
+                    result=os.system(command)
+                    print("\n\n")
+    return(result)
+
 # Load standard settings
 settings=lib.settings.getSettings()
 
@@ -33,7 +89,7 @@ if len(arguments["baseFile"]) > 0:
     settings["baseFile"]=arguments["baseFile"]
 
 if len(settings["baseFile"]) == 0:
-    print("Please specify a base file to open using:")
+    print("== Please specify a base file to open using:")
     print("python3 main.py --baseFile <filename>")
     exit(1)
 
@@ -44,7 +100,7 @@ if settings["baseFile"][len(settings["baseFile"])-5 : len(settings["baseFile"])]
     settings["finalFileName"]=settings["baseFile"][0:len(settings["baseFile"])-5]+".blend"
 else:
     print("== Base file must have '.base' extension!")
-    print("== ",settings["baseFile"])
+    print(settings["baseFile"])
     exit(1)
 
 # run system check
@@ -61,10 +117,10 @@ if fail == 1 and arguments["force"] == False:
 if arguments["systemCheck"] == True:
     exit(0)
 
-print("\nContinuing...")
+print("\n== Continuing...\n\n")
 
 # Load the import details database
-entityDatabase = parseCSVFile(settings["csvFile"], settings["meshPath"])
+entityDatabase,meshAdjustmentDatabase,rotationAdjustmentDatabase = parseCSVFile(settings["csvFile"], settings["meshPath"])
 
 # Initialise reporting variables
 progress,reportList,reportNot=initReporting()
@@ -73,79 +129,58 @@ progress,reportList,reportNot=initReporting()
 surfaces=parseBaseFile(settings["basePath"]+settings["baseFile"])
 progress["numberOfSurfaces"]=len(surfaces)
 
-reportVisibleTypes, coetos, reportInvisibleTypes, unknownEntities = lib.report.buildReport(surfaces, settings, entityDatabase)
-listOfTypes=reportVisibleTypes.keys()
-
-lib.report.reportPrint(reportVisibleTypes,reportInvisibleTypes,unknownEntities)
-
-if arguments["reportOnly"] == True:
-    print("Report has been printed, quitting...")
-    exit()
-
-print("==",len(listOfTypes),"types in shortlist")
-print("==",listOfTypes)
-
 # lets make a folder for the final file, and a working folder for all the fragments.
 if not os.path.exists(settings["outputPath"]):
     os.mkdir(settings["outputPath"])
 if not os.path.exists(settings["outputPath"]+settings["workingPath"]):
     os.mkdir(settings["outputPath"]+settings["workingPath"])
 
+
+# ================
+# fragment builder
+# ================
 result=0
 fragmentList=list()
-for surfaceName in surfaces:
-  if result != 0:
-        print("== skipping all remaining fragments")
-  else:
-   if len(arguments["surfaceName"]) == 0 or arguments["surfaceName"] == surfaceName:
-    surface=json.loads(surfaces[surfaceName])
-    cOETOS = json.loads(coetos[surfaceName])
+pseudobase=""
 
-    for settings["entityType"] in cOETOS.keys():    # Don't loop from listOfEntities which contains entities that are missing from some surfaces.
-      if result != 0:
-        print("== skipping all remaining fragments")
-      else:
+# build main base, excluding wall connectors...
+if arguments["reportOnly"] == True:
+    print("\n\n== Generating report only. No files will be written...")
+else:
+    print("\n\n== Running Fragment Builder...")
+result=processBasefile(surfaces,pseudobase)
 
-        for start in range(0, cOETOS[settings["entityType"]], settings["entityLimit"]):
-
-          # Ctrl+c while fragmentBuilder.py is running will terminate that process only,
-          # This if statement stops further instances of that process from starting.
-          if result != 0:
-            print("== skipping all remaining fragments")
-          else:
-            
-            finish = start + settings["entityLimit"]
-
-            # We're about to create a fragment, lets document it so the concatenator can find it later.
-            
-            fragment=dict()
-            fragment["filename"]=settings["outputPath"]+settings["workingPath"]+"fragment-"+surfaceName+"-"+settings["entityType"]+"-"+str(start)+".blend"
-            fragment["surfaceName"]=surfaceName
-            fragment["entityType"]=settings["entityType"]
-            fragment["collection"]=surfaceName+"-"+settings["entityType"]+"-fragment"
-            fragmentList.append(json.dumps(fragment))
-
-            # Execute the fragment builder inside Blender.
-            command="blender --python fragmentBuilder.py --no-window-focus -- " + " --baseFile " + settings["baseFile"] + " --workingPath " + settings["workingPath"] + " --surfaceName " + surfaceName + " --entityType " + settings["entityType"] + " --range " + str(start) + " " + str(finish) + " --frag " + fragment["filename"]
-            print("== running>",command,"\n")
-            result=os.system(command)
-            
-# Now we drop a list of all those fragments into a file for the concatenator, even if there were errors.
-writeFragmentList(fragmentList,settings)
-
+print("== processing walls...")
 if result != 0:
     print("== error ",result)
 else:
-    print("== Concatenating fragments")
+    # calculate the position of wall connectors, and build a new surface for them.
+    addendingbasefile=settings["outputPath"]+settings["workingPath"]+settings["baseFile"]
+    pseudoSurfaces=lib.wall.connect(surfaces,entityDatabase,addendingbasefile,arguments)
+    print("\n\n== Running Fragment Builder on pseudoSurfaces...")
+    pseudobase="--pseudobase"
+    result=processBasefile(pseudoSurfaces,pseudobase)
+
+# ============
+# concatenator
+# ============
+# Now we drop a list of all those fragments into a file for the concatenator, even if there were errors.
+writeFragmentList(fragmentList,settings)
+if result != 0:
+    print("== error ",result)
+else:
+    print("\n\n== Concatenating fragments")
     command="blender --python concatenator.py --no-window-focus -- --outputPath " + settings["outputPath"] + " --finalFilename " + settings["finalFileName"] + " --workingPath " + settings["workingPath"]
     print("== Running>",command,"\n")
     result=os.system(command)
 
-
+# =========
+# floompher
+# =========
 if result != 0:
     print("== error ",result)
 else:
-    print("== Floomphing cubes into interesting entities")
+    print("\n\n== Floomphing cubes into interesting entities")
     command="blender " + settings["outputPath"]+settings["finalFileName"] + " --python floompher.py"
     print("== Running>",command,"\n")
     result=os.system(command)

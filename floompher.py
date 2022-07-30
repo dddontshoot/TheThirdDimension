@@ -13,9 +13,10 @@ lib.blender.unselectEverything
 
 meshes=dict()
 entitiesInUse = list()
+print("Now floomphing...")
 for item in bpy.data.objects.items():   # this selects from a list of every entitiy in the document.
-    print("Floomphing",item)
     entity = item[1]    # entity
+    #print("Floomphing",entity["name"])
     try:
         datum = entity["filename"]
     except:

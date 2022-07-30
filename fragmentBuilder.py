@@ -32,6 +32,7 @@ settings["entityType"]=arguments["entityType"]
 settings["start"]=arguments["start"]
 settings["finish"]=arguments["finish"]
 settings["frag"]=arguments["frag"]
+settings["pseudobase"]=arguments["pseudobase"]
 
 # Lets throw away the default cube
 lib.blender.deleteDefaultCube()
@@ -43,13 +44,16 @@ lib.blender.deleteDefaultCube()
 #lib.blender.collectionRename("Collection",settings["entityType"])
 
 # Load the import details database
-entityDatabase = parseCSVFile(settings["csvFile"], settings["meshPath"])
+entityDatabase,meshAdjustmentDatabase, rotationAdjustmentDatabase = parseCSVFile(settings["csvFile"], settings["meshPath"])
 
 # Initialise reporting variables
 progress,reportList,reportNot=initReporting()
 
 # Load the .base file.
-surfaces=parseBaseFile(settings["basePath"]+settings["baseFile"])
+if settings["pseudobase"] == False:
+    surfaces=parseBaseFile(settings["basePath"]+settings["baseFile"])
+else:
+    surfaces=parseBaseFile(settings["outputPath"]+settings["workingPath"]+settings["baseFile"])
 progress["numberOfSurfaces"]=len(surfaces)
 
 #print("= Total number of surfaces =",    progress["numberOfSurfaces"])
@@ -79,22 +83,35 @@ for surfaceName in surfaces.keys():   # this line could be replaced by a single 
         entityProperties["surface"]=surfaceName
 
         # Try and find the entity in the database. If it's not there then report the finding of a new entity.
-        if entityProperties["type"] == settings["entityType"]:
+        if entityProperties["name"] == settings["entityType"]:
                 # Lets pull the import details from the database
                 entityImportDetails=json.loads(entityDatabase[entityProperties["name"]])
                 #if entityImportDetails["3D"] == 1 and entityImportDetails["visible"] == 1: # The entity must be 2D and visible # This check is done by the report function from main.py
                 if counter >= arguments["start"] and counter < arguments["finish"]:
-                        lib.blender.newObject(entityProperties, entityImportDetails, myCollection, mesh)
-                progress["numberOfEntitiesOnSurfaceCompleted"] = progress["numberOfEntitiesOnSurfaceCompleted"] +1
-                print("= Entity number",arguments["start"]+progress["numberOfEntitiesOnSurfaceCompleted"],surfaceName,entityProperties["name"])
+
+                        # Check if the entity needs a rotation adjustment
+                        entityProperties["rotationAdjustment"]=0
+                        if entityProperties["name"] in rotationAdjustmentDatabase:
+                            print("=== ", entityProperties["name"], entityProperties["direction"], "is listed in RotationAdjustment.json ===")
+                            entityRotationAdjustment=json.loads(rotationAdjustmentDatabase[entityProperties["name"]])
+                            for index in entityRotationAdjustment.keys():
+                                #print("(((",index,"))) (((",entityProperties["direction"],")))")
+                                if int(entityProperties["direction"]) == int(index):
+                                    #print("====== ",index,"is a listed index ======")
+                                    entityProperties["rotationAdjustment"]=entityRotationAdjustment[index]
+
+                        lib.blender.newObject(entityProperties, entityImportDetails, meshAdjustmentDatabase, myCollection, mesh)
+                        progress["numberOfEntitiesOnSurfaceCompleted"] = progress["numberOfEntitiesOnSurfaceCompleted"] +1
+                #print("= Entity number",arguments["start"]+progress["numberOfEntitiesOnSurfaceCompleted"],surfaceName,entityProperties["name"])
                 counter=counter+1
+
+    print("=",progress["numberOfEntitiesOnSurfaceCompleted"], "items processed")
 
 # Filename is now passed from main.py
 #fragmentFilename=settings["outputPath"]+settings["workingPath"]+"fragment-"+arguments["surface"]+"-"+settings["entityType"]+"-"+str(arguments["start"])+".blend"
 print("= Saving fragment",settings["frag"])
 lib.blender.saveAs(settings["frag"])
 
-print("=completed")
-print("")
+print("= Completed\n\n")
 
 exit(0)
