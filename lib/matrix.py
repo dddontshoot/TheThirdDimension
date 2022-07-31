@@ -43,12 +43,12 @@ def insert(matrix,entity):
             result=True
         else:
             # miss! entity cannot be a duplicate!
-            y.append(entity["y"])
+            y[entity["y"]]=json.dumps(entity)
             matrix[entity["x"]]=json.dumps(y)
     else:
         # miss! entity cannot be a duplicate!
-        y=list()
-        y.append(entity["y"])
+        y=dict()
+        y[entity["y"]]=json.dumps(entity)
         matrix[entity["x"]]=json.dumps(y)
     # print("result=",result)
     return(matrix,result)
