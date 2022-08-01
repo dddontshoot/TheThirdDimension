@@ -21,15 +21,16 @@ def connect(surfaces, entityDatabase, addendingbasefile, arguments):
 
     print("=",len(connectsTo.keys()),"visible connectors found in database")
     pseudoSurfaces = dict()
-    pseudoSurface  = list()
     if len(connectsTo)>0:
         # Only procede if visible connectors are present.
         print(connectsTo.keys())
-        pseudoSurfaceName=lib.utils.distinctName(surfaces,"pseudoSurface")
+        #pseudoSurfaceName=lib.utils.distinctName(surfaces,"pseudoSurface")
         for surfaceName in surfaces.keys():
+          pseudoSurfaceName=surfaceName
+          pseudoSurface  = list()
           if len(arguments["surfaceName"]) == 0 or arguments["surfaceName"] == surfaceName:
             surface=json.loads(surfaces[surfaceName])
-            print("= Connecting walls on",surfaceName,"...")
+            print("\n= Connecting walls on",surfaceName,"...")
 
             x=0
             filteredSurface=list()
@@ -48,9 +49,6 @@ def connect(surfaces, entityDatabase, addendingbasefile, arguments):
 
             for item in filteredSurface:
                 x=x+1
-                if False: #if x/10-int(x/10) == 0:
-                    print(x,"of",len(filteredSurface),"entities completed")
-                    print(item)
                 # Unpack entities from the surface
                 entityProperties=json.loads(item)
                 entityProperties["x"]=entityProperties["x"]*(-1) # For some reason Blender universe is backwards to everything else.
@@ -98,7 +96,7 @@ def connect(surfaces, entityDatabase, addendingbasefile, arguments):
 
                                     # So lets connect them with this new entity...
                                     newEntity=dict()
-                                    newEntity["x"]=(entityProperties["x"]+entityPropertiesOther["x"])/-2
+                                    newEntity["x"]=(entityProperties["x"]+entityPropertiesOther["x"])/2
                                     newEntity["y"]=(entityProperties["y"]+entityPropertiesOther["y"])/2
                                     newEntity["direction"]=entityPropertiesOther["ortho"]
                                     newEntity["filename"]=entityPropertiesConnector["filename"]
@@ -113,9 +111,10 @@ def connect(surfaces, entityDatabase, addendingbasefile, arguments):
                                     matrix,duplicate=lib.matrix.insert(matrix,newEntity)
                                     if duplicate == False:
                                         # but we still have to populate the new surface.
+                                        newEntity["x"]=newEntity["x"]*(-1)
                                         pseudoSurface.append(json.dumps(newEntity))
                                         #print("pseudoSurface now has",len(pseudoSurface),"entries")
-        pseudoSurfaces[pseudoSurfaceName]=json.dumps(pseudoSurface)
+          pseudoSurfaces[pseudoSurfaceName]=json.dumps(pseudoSurface)
         print("= Attempting to write conecting entities into addending base file...")
         universe=dict()
         universe["surfaces"]=json.dumps(pseudoSurfaces)
