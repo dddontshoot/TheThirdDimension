@@ -1,4 +1,3 @@
-import bpy
 import sys
 import pathlib
 sys.path.append(str(pathlib.Path().absolute()))
@@ -31,8 +30,6 @@ for item in listOfFragments:
     print("> from ",fragment["filename"]," Importing" , fragment["collection"])
 
     ############### Manage collection tree ##############
-    masterCollection  = bpy.context.scene.collection
-    #currentCollection = bpy.context.view_layer.active_layer_collection # Will this hold the newly imported fragment? ...well, it is currently selected.
 
     colSurfaceName = fragment["surfaceName"]
     colEntityName  = fragment["surfaceName"]+"-"+fragment["entityType"]
@@ -40,7 +37,7 @@ for item in listOfFragments:
     if colSurfaceName not in collectionsInUse:
         
         # create a new collection inside it:
-        lib.blender.collectionCreate(new=colSurfaceName, parent=bpy.context.scene.collection)
+        lib.blender.collectionCreate(new=colSurfaceName)
 
         # Add it to the list
         collectionsInUse.append(colSurfaceName)
@@ -48,34 +45,17 @@ for item in listOfFragments:
     if colEntityName not in collectionsInUse:
 
         # create a new collection inside it:
-        lib.blender.collectionCreate(new=colEntityName, parent=bpy.data.collections.get(colSurfaceName))
+        lib.blender.collectionCreate(new=colEntityName, parent=colSurfaceName)
 
         # Add it to the list
         collectionsInUse.append(colEntityName)
 
     # select the correct collection ready to import the fragments directly into the right place.  # Also not helpful.
-    layer_collection = bpy.context.view_layer.layer_collection.children[colSurfaceName].children[colEntityName]
-    bpy.context.view_layer.active_layer_collection = layer_collection
+    lib.blender.collectionSelect(colSurfaceName,colEntityName)
 
     ######################################################
 
-    section="\\Collection\\"
-    #objectType = "Collection"
-    #objectType = fragment["surface"]+"_"+fragment["collection"]
-    objectType = fragment["collection"]
-
-    directory = fragment["filename"] + section
-    filename  = objectType
-    filepath  = directory+filename
-
-    newfragment=bpy.ops.wm.append(
-    #filepath=filepath, 
-    filename=filename, # lol
-    directory=directory
-    )
-
-    # I'm expecting the newly imported fragment to just fall into the right place.
-    #masterCollection.children.unlink(newFragment)
+    lib.blender.concatCollection(fragment["filename"],fragment["collection"])
 
 # save the final document, job is all done.
 final=settings["outputPath"]+settings["finalFilename"]

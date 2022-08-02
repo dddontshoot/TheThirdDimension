@@ -38,10 +38,8 @@ settings["pseudobase"]=arguments["pseudobase"]
 lib.blender.deleteDefaultCube()
 
 # I thought that removing the default collection was a good idea. It worked for a while...???
+# Don't remove the default collection! I'm using it to create empty collection_instances!
 #lib.blender.collectionRemove("Collection")
-
-# and give the collection a sensible name
-#lib.blender.collectionRename("Collection",settings["entityType"])
 
 # Load the import details database
 entityDatabase,meshAdjustmentDatabase, rotationAdjustmentDatabase = parseCSVFile(settings["csvFile"], settings["meshPath"])
@@ -67,7 +65,7 @@ listOfFragments=list()
 counter=int()
 
 myCollection=lib.blender.collectionCreate(settings["surfaceName"]+"-"+settings["entityType"]+"-fragment")
-mesh=lib.blender.meshCreate()
+#mesh=lib.blender.meshCreate() # Only needed if we go back to importing Objects.
 
 for surfaceName in surfaces.keys():   # this line could be replaced by a single surfaceName to be determined by the external python code.
   if surfaceName == settings["surfaceName"]:
@@ -100,7 +98,8 @@ for surfaceName in surfaces.keys():   # this line could be replaced by a single 
                                     #print("====== ",index,"is a listed index ======")
                                     entityProperties["rotationAdjustment"]=entityRotationAdjustment[index]
 
-                        lib.blender.newObject(entityProperties, entityImportDetails, meshAdjustmentDatabase, myCollection, mesh)
+                        lib.blender.newInstance(entityProperties, entityImportDetails, meshAdjustmentDatabase, myCollection)
+                        # lib.blender.newObject(entityProperties, entityImportDetails, meshAdjustmentDatabase, myCollection, mesh) # Only needed if we go back to importing Objects.
                         progress["numberOfEntitiesOnSurfaceCompleted"] = progress["numberOfEntitiesOnSurfaceCompleted"] +1
                 #print("= Entity number",arguments["start"]+progress["numberOfEntitiesOnSurfaceCompleted"],surfaceName,entityProperties["name"])
                 counter=counter+1
@@ -108,7 +107,6 @@ for surfaceName in surfaces.keys():   # this line could be replaced by a single 
     print("=",progress["numberOfEntitiesOnSurfaceCompleted"], "items processed")
 
 # Filename is now passed from main.py
-#fragmentFilename=settings["outputPath"]+settings["workingPath"]+"fragment-"+arguments["surface"]+"-"+settings["entityType"]+"-"+str(arguments["start"])+".blend"
 print("= Saving fragment",settings["frag"])
 lib.blender.saveAs(settings["frag"])
 
