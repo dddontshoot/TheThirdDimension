@@ -86,17 +86,23 @@ for surfaceName in surfaces.keys():   # this line could be replaced by a single 
                 entityImportDetails=json.loads(entityDatabase[entityProperties["name"]])
                 #if entityImportDetails["3D"] == 1 and entityImportDetails["visible"] == 1: # The entity must be 2D and visible # This check is done by the report function from main.py
                 if counter >= arguments["start"] and counter < arguments["finish"]:
-
+                        
                         # Check if the entity needs a rotation adjustment
                         entityProperties["rotationAdjustment"]=0
                         if entityProperties["name"] in rotationAdjustmentDatabase:
                             print("=== ", entityProperties["name"], entityProperties["direction"], "is listed in RotationAdjustment.json ===")
                             entityRotationAdjustment=json.loads(rotationAdjustmentDatabase[entityProperties["name"]])
-                            for index in entityRotationAdjustment.keys():
+                            if 999 in entityRotationAdjustment.keys() or "999" in entityRotationAdjustment.keys():
+                                entityProperties["r"]=-360*entityProperties["orientation"]
+                            else:
+                              for index in entityRotationAdjustment.keys():
                                 #print("(((",index,"))) (((",entityProperties["direction"],")))")
                                 if int(entityProperties["direction"]) == int(index):
                                     #print("====== ",index,"is a listed index ======")
                                     entityProperties["rotationAdjustment"]=entityRotationAdjustment[index]
+                              entityProperties["r"] = (entityProperties["direction"] * -45) + entityProperties["rotationAdjustment"]
+                        else:
+                              entityProperties["r"] = (entityProperties["direction"] * -45) + entityProperties["rotationAdjustment"]
 
                         lib.blender.newInstance(entityProperties, entityImportDetails, meshAdjustmentDatabase, myCollection)
                         # lib.blender.newObject(entityProperties, entityImportDetails, meshAdjustmentDatabase, myCollection, mesh) # Only needed if we go back to importing Objects.
