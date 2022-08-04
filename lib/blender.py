@@ -36,9 +36,9 @@ def newObject(entityProperties, entityImportDetails, meshAdjustmentDatabase, col
     # Location
     newObject.location = (entityProperties["x"], entityProperties["y"], 0)
 
-    # rotation
-    r = (entityProperties["direction"] * -45) + entityProperties["rotationAdjustment"]
-    newObject.rotation_euler[2] = math.radians(r)
+    # rotation # r is now set by the fragmentBuilder.py, and passed to blender.py
+    #r = (entityProperties["direction"] * -45) + entityProperties["rotationAdjustment"]
+    newObject.rotation_euler[2] = math.radians(entityProperties["r"])
 
 def newInstance(entityProperties, entityImportDetails, meshAdjustmentDatabase, collection):
 
@@ -79,8 +79,8 @@ def newInstance(entityProperties, entityImportDetails, meshAdjustmentDatabase, c
     newObject.location = (entityProperties["x"], entityProperties["y"], 0)
 
     # rotation
-    r = (entityProperties["direction"] * -45) + entityProperties["rotationAdjustment"]
-    newObject.rotation_euler[2] = math.radians(r)
+    #r = (entityProperties["direction"] * -45) + entityProperties["rotationAdjustment"]
+    newObject.rotation_euler[2] = math.radians(entityProperties["r"])
 
 def collectionCreate(new, parent=bpy.context.scene.collection):
     print("Creating collection ",new)

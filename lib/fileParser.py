@@ -93,7 +93,7 @@ def parseCSVFile(csvfile, meshPath):
                                 entityRotationAdjustment=json.loads(rotationAdjustmentDatabase[entityImportDetails["name"]])
                             entityImportDetails["rotationAdjustment"] = cell.split(".")
                             if type(entityImportDetails["rotationAdjustment"]) == int:
-                                print("writing int:",entityImportDetails["rotationAdjustment"])
+                                #print("writing int:",entityImportDetails["rotationAdjustment"])
                                 entityRotationAdjustment[entityImportDetails["rotationAdjustment"]]=entityImportDetails["rotation"]
                             if type(entityImportDetails["rotationAdjustment"]) == list:
                                 #print("writing list:",entityImportDetails["rotationAdjustment"])
