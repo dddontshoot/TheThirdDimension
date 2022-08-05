@@ -3,7 +3,7 @@ import pathlib
 sys.path.append(str(pathlib.Path().absolute()))
 import time
 import json
-#import bpy
+import bpy
 
 #local modules
 import lib.settings
@@ -66,6 +66,10 @@ counter=int()
 
 myCollection=lib.blender.collectionCreate(settings["surfaceName"]+"-"+settings["entityType"]+"-fragment")
 #mesh=lib.blender.meshCreate() # Only needed if we go back to importing Objects.
+bezier=lib.blender.bezierCreate()
+bezierList=list()
+bezierList.append("straight-rail")
+bezierList.append("curved-rail")
 
 for surfaceName in surfaces.keys():   # this line could be replaced by a single surfaceName to be determined by the external python code.
   if surfaceName == settings["surfaceName"]:
@@ -90,7 +94,9 @@ for surfaceName in surfaces.keys():   # this line could be replaced by a single 
                         # Check if the entity needs a rotation adjustment
                         entityProperties["rotationAdjustment"]=0
                         if entityProperties["name"] in rotationAdjustmentDatabase:
-                            print("=== ", entityProperties["name"], entityProperties["direction"], "is listed in RotationAdjustment.json ===")
+                            if entityProperties["name"] not in entitiesInUse:
+                                entitiesInUse.append(entityProperties["name"])
+                                print("=", entityProperties["name"], entityProperties["direction"], "is listed in RotationAdjustment.json <----")
                             entityRotationAdjustment=json.loads(rotationAdjustmentDatabase[entityProperties["name"]])
                             if 999 in entityRotationAdjustment.keys() or "999" in entityRotationAdjustment.keys():
                                 entityProperties["r"]=-360*entityProperties["orientation"]
@@ -104,8 +110,11 @@ for surfaceName in surfaces.keys():   # this line could be replaced by a single 
                         else:
                               entityProperties["r"] = (entityProperties["direction"] * -45) + entityProperties["rotationAdjustment"]
 
-                        lib.blender.newInstance(entityProperties, entityImportDetails, meshAdjustmentDatabase, myCollection)
-                        # lib.blender.newObject(entityProperties, entityImportDetails, meshAdjustmentDatabase, myCollection, mesh) # Only needed if we go back to importing Objects.
+                        lib.blender.newEntity(entityProperties, entityImportDetails, meshAdjustmentDatabase, myCollection)
+                        #lib.blender.newEntity(entityProperties, entityImportDetails, meshAdjustmentDatabase, mesh) # Only needed if we go back to importing Objects.
+                        if entityProperties["name"] in bezierList:
+                            lib.blender.newEntity(entityProperties,entityImportDetails,meshAdjustmentDatabase,myCollection,bezier)
+                            
                         progress["numberOfEntitiesOnSurfaceCompleted"] = progress["numberOfEntitiesOnSurfaceCompleted"] +1
                 #print("= Entity number",arguments["start"]+progress["numberOfEntitiesOnSurfaceCompleted"],surfaceName,entityProperties["name"])
                 counter=counter+1

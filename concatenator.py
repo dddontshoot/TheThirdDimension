@@ -27,7 +27,7 @@ collectionsInUse=list()
 for item in listOfFragments:
     fragment=json.loads(item)
     
-    print("> from ",fragment["filename"]," Importing" , fragment["collection"])
+    # print("> from ",fragment["filename"]," Importing" , fragment["collection"])
 
     ############### Manage collection tree ##############
 

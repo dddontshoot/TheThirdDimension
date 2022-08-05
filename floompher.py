@@ -5,14 +5,15 @@ sys.path.append(str(pathlib.Path().absolute()))
 import bpy
 import lib.blender 
 
-# intented command line for this module is:
+# intended command line for this module is:
 # blender myfilename.blend -- python floompher.py
 
 lib.blender.unselectEverything
 #lib.blender.deleteDefaultCube() # no need to do this, it should have been removed by the concatenator.
 
-meshes=dict()
-entitiesInUse = list()
+# Damn you Python! Your two dimentional arrays are your most infuriating feature!
+datumIndex=list()
+datums=dict()
 print("Now floomphing...")
 
 # Create a collection for the Datums and, select it.
@@ -25,32 +26,40 @@ for item in bpy.data.objects.items():   # this selects from a list of every enti
     entity = item[1]
     #print("Floomphing",entity["name"])
     try:
-        datum = entity["filename"]
+        datumFilename = entity["filename"]
     except:
-        datum=""
-    if datum != "":
-      if datum not in entitiesInUse:
+        datumFilename=""
+    if datumFilename != "":
+        datumIndexKey=entity.type+"-"+datumFilename
+        if datumIndexKey not in datumIndex:
+            datumIndex.append(datumIndexKey)
+            importedObject=""
+            if entity.type=="MESH":
+                lib.blender.importObject(datumFilename,"Cube")
+                importedObject=bpy.data.objects.get("Cube")
+                
+            if entity.type=="EMPTY":
+                lib.blender.concatCollection(datumFilename,"TTD")
+                importedObject=bpy.data.collections.get("TTD")
 
-        # Add it to the list
-        entitiesInUse.append(datum)
+            if entity.type=="CURVE":
+                lib.blender.importObject(datumFilename,"Bezier")
+                importedObject=bpy.data.objects.get("Bezier")
 
-        # We haven't imported this file before, lets do that now.
-        lib.blender.concatCollection(datum,"TTD")
-        #lib.blender.buildEntity(datum) # Only needed if we go back to importing Objects.
+            if importedObject != "":
+                importedObject.name=datumIndexKey
+                datums[datumIndexKey]=importedObject
 
-        # Unselect it
         lib.blender.unselectEverything()
 
-        # Store it ready for the next time we want to floomph something
-        meshes[datum]=bpy.data.collections.get("TTD")
-        #meshes[datum]=bpy.data.objects.get(datum) # Only needed if we go back to importing Objects.
+        if entity.type=="MESH":
+            entity.data=datums[datumIndexKey].data
 
-        # And give it an appropriate name
-        meshes[datum].name=datum
+        if entity.type=="EMPTY":
+            entity.instance_collection=datums[datumIndexKey]
 
-      # Finally, connect the empty instance to the appropriate datum
-      entity.instance_collection=meshes[datum]
-      #entity.data=meshes[datum].data # Only needed if we go back to importing Objects.
+        if entity.type=="CURVE":
+            entity.data=datums[datumIndexKey].data
 
 # We don't need to see the datums
 bpy.data.collections.get("Datum").hide_viewport=True
