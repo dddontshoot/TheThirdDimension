@@ -1,10 +1,15 @@
 import bpy
+import math
 
 def meshCreate():
     mesh=bpy.data.meshes.new("mesh")
     return(mesh)
 
-def newObject(entityProperties, entityImportDetails, meshAdjustmentDatabase, collection, mesh):
+def bezierCreate():
+    bezier=bpy.data.curves.new("newbezier","CURVE")
+    return(bezier)
+
+def newEntity(entityProperties, entityImportDetails, meshAdjustmentDatabase, collection, mesh):
     import math
     import json
 
@@ -39,6 +44,46 @@ def newObject(entityProperties, entityImportDetails, meshAdjustmentDatabase, col
     # rotation # r is now set by the fragmentBuilder.py, and passed to blender.py
     #r = (entityProperties["direction"] * -45) + entityProperties["rotationAdjustment"]
     newObject.rotation_euler[2] = math.radians(entityProperties["r"])
+
+
+
+
+def newObjectBezier(entityProperties, entityImportDetails,meshAdjustmentDatabase, collection, bezier):
+    import math
+    import json
+
+    # Create a new object with basic mesh
+    newObject = bpy.data.objects.new('new_object', bezier)
+
+    # Add the object to a collection
+    collection.objects.link(newObject)
+
+    for item in entityProperties.keys():
+        newObject[item]=entityProperties[item]
+
+    # Mesh. Eventually, when we import the mesh, we'll need to know where to get it from.
+    # Lets check to see if the entity matches the criteria for mesh adjustment.
+    if entityProperties["name"] in meshAdjustmentDatabase.keys():
+        #print("found matching entity name, comparing for",entityProperties["direction"])
+        entityMeshAdjustment=json.loads(meshAdjustmentDatabase[entityProperties["name"]])
+        if str(entityProperties["direction"]) in entityMeshAdjustment.keys():
+            #print("replacing mesh...")
+            newObject["filename"] = entityMeshAdjustment[str(entityProperties["direction"])]
+        else:
+                newObject["filename"]=entityImportDetails["filename"]
+    else:
+                newObject["filename"]=entityImportDetails["filename"]
+
+    # Give the object an appropriate name
+    newObject.name=entityProperties["name"]
+
+    # Location
+    newObject.location = (entityProperties["x"], entityProperties["y"], 0)
+
+    # rotation # r is now set by the fragmentBuilder.py, and passed to blender.py
+    #r = (entityProperties["direction"] * -45) + entityProperties["rotationAdjustment"]
+    newObject.rotation_euler[2] = math.radians(entityProperties["r"])
+
 
 def newInstance(entityProperties, entityImportDetails, meshAdjustmentDatabase, collection):
 
@@ -146,21 +191,43 @@ def deleteDatums(entitiesInUse):
 def saveAs(fragmentFilename):
     bpy.ops.wm.save_as_mainfile(filepath=fragmentFilename)
 
-def buildEntity(datum):
-                        print("Importing" , datum)
+def buildEntity(datumFilename,objectName):
+                        print("From",datumFilename,"importing",objectName)
 
                         section="\\Object\\"
 
-                        filepath  = datum + section + "Cube"
-                        directory = datum + section
-                        filename  = "Cube"
+                        filepath  = datumFilename + section + objectName
+                        directory = datumFilename + section
+                        filename  = objectName
 
                         bpy.ops.wm.append(
                         filepath=filepath, 
                         filename=filename, # lol
                         directory=directory
                         )
-                        bpy.data.objects[filename].name = datum
+                        #bpy.data.objects[filename].name = datum
+
+                        unselectEverything()
+
+def buildBezier(entityProperties,entityImportDetails):
+                        datum=entityImportDetails["filename"]
+                        print("Importing bezier" , datum)
+
+                        section="\\Object\\"
+
+                        filepath  = datum + section + "Bezier"
+                        directory = datum + section
+                        filename  = "Bezier"
+
+                        bpy.ops.wm.append(
+                        filepath=filepath, 
+                        filename=filename, # lol
+                        directory=directory
+                        )
+                        selected = bpy.context.selected_objects
+                        selected[0].name = datum+"-Bezier"
+                        selected[0].location = (entityProperties["x"], entityProperties["y"], 0)
+                        selected[0].rotation_euler[2] = math.radians(entityProperties["r"])
 
                         unselectEverything()
 
